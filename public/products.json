@@ -1,0 +1,62 @@
+[
+  {
+    "_id": "626d6972657addda4d9fa484",
+    "name": "Realme Buds Q",
+    "description": "True wireless earbuds gives good feedback and good sound quality",
+    "img": "https://introvaly.com/gremtoot/2021/01/Realme-Buds-Q-Introvaly-Online-Shop-BD-3.jpg",
+    "price": 20,
+    "quantity": 70,
+    "supplierName": "Hasib Miraz",
+    "supplierEmail": "hasibmiraz09@gmail.com"
+  },
+  {
+    "_id": "626d69724ab3798b8ab71eac",
+    "name": "Iphone 13",
+    "description": "Lates iphone in the market.",
+    "img": "https://www.apple.com/newsroom/images/product/iphone/standard/Apple_iphone13_hero_09142021_inline.jpg.slideshow-xlarge.jpg",
+    "price": 999,
+    "quantity": 100,
+    "supplierName": "Hasib Miraz",
+    "supplierEmail": "hasibmiraz09@gmail.com"
+  },
+  {
+    "_id": "626d6972754bd1e37f082657",
+    "name": "Amazfit GTR 2",
+    "description": "Very good smartwatch by xiaomi in the budget",
+    "img": "https://cdn.shopify.com/s/files/1/0406/4500/1379/products/1_2048x2048_a0c69b45-0070-4511-b144-0a637e0a596b_480x480.jpg?v=1636946752",
+    "price": 180,
+    "quantity": 65,
+    "supplierName": "Sabbir",
+    "supplierEmail": "hasibulalam405@gmail.com"
+  },
+  {
+    "_id": "626d697216d9ee64bf9cb56b",
+    "name": "Realme Buds Wireless Pro ANC",
+    "description": "Budget ANC neckband by realme",
+    "img": "https://www.dakhm.com/wp-content/uploads/2021/10/Untitled-2.png",
+    "price": 20,
+    "quantity": 70,
+    "supplierName": "Rizvi",
+    "supplierEmail": "rizvi01@gmail.com"
+  },
+  {
+    "_id": "626d697216d9ee64bf9cb56c",
+    "name": "Wavefun Flex Pro",
+    "description": "Budget neckband by wavefun",
+    "img": "https://www.gadstyle.com/wp-content/uploads/2018/12/Wavefun-Flex-Pro-Quick-Charging-AAC-Bluetooth-Earphone-Wireless-Headphones-11.jpg",
+    "price": 10,
+    "quantity": 60,
+    "supplierName": "Rizvi",
+    "supplierEmail": "rizvi01@gmail.com"
+  },
+  {
+    "_id": "626d697216d9ee64bf9cb56d",
+    "name": "Samsung Galaxy S22",
+    "description": "Best phone with camera in the market right now",
+    "img": "https://static.toiimg.com/thumb/resizemode-4,msid-89472209,imgsize-200,width-1200/89472209.jpg",
+    "price": 20,
+    "quantity": 70,
+    "supplierName": "Rizvi",
+    "supplierEmail": "rizvi01@gmail.com"
+  }
+]
