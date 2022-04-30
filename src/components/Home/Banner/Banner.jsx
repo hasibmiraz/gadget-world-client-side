@@ -1,7 +1,7 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import inventory1 from '../../../images/carouselImages/inventory-1.jpg';
 import inventory2 from '../../../images/carouselImages/inventory-2.jpg';
-import inventory3 from '../../../images/carouselImages/inventory-3.jpg';
 
 const Banner = () => {
   return (
@@ -25,11 +25,6 @@ const Banner = () => {
             data-bs-slide-to="1"
             aria-label="Slide 1"
           ></button>
-          <button
-            data-bs-target="#carouselDarkVariant"
-            data-bs-slide-to="2"
-            aria-label="Slide 1"
-          ></button>
         </div>
 
         {/* <!-- Inner --> */}
@@ -41,36 +36,30 @@ const Banner = () => {
               className="block w-full"
               alt="Motorbike Smoke"
             />
-            <div className="carousel-caption hidden md:block absolute text-center">
-              <h5 className="text-xl">First slide label</h5>
-              <p>
-                Some representative placeholder content for the first slide.
+            <div className="carousel-caption absolute text-center">
+              <h5 className="text-lg md:text-3xl text-white py-3">
+                Gadget World
+              </h5>
+              <p className="text-white text-sm md:text-xl">
+                Keeps you updated with your inventory count.
               </p>
+              <Link to="/signup">
+                <button className="text-white bg-green-500 my-1 md:my-3 px-5 md:px-10 py-2 md:py-4 rounded hover:bg-green-700 hover:scale-105 ease-in duration-200 ">
+                  Sign Up
+                </button>
+              </Link>
             </div>
           </div>
 
           {/* <!-- Single item --> */}
           <div className="carousel-item relative float-left w-full">
             <img src={inventory2} className="block w-full" alt="Mountaintop" />
-            <div className="carousel-caption hidden md:block absolute text-center">
-              <h5 className="text-xl">Second slide label</h5>
-              <p>
-                Some representative placeholder content for the second slide.
-              </p>
-            </div>
-          </div>
-
-          {/* <!-- Single item --> */}
-          <div className="carousel-item relative float-left w-full">
-            <img
-              src={inventory3}
-              className="block w-full"
-              alt="Woman Reading a Book"
-            />
-            <div className="carousel-caption hidden md:block absolute text-center">
-              <h5 className="text-xl">Third slide label</h5>
-              <p>
-                Some representative placeholder content for the third slide.
+            <div className="carousel-caption absolute text-center">
+              <h5 className="text-lg md:text-3xl text-white py-3">
+                Gadget World inventory
+              </h5>
+              <p className="text-white text-sm md:text-xl">
+                Helps you to keep track on all of your products and their prices
               </p>
             </div>
           </div>
