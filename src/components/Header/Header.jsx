@@ -6,6 +6,9 @@ import { NavLink } from 'react-router-dom';
 const Header = () => {
   const [open, setOpen] = useState(false);
 
+  const activeLink = (active) =>
+    active ? 'nav-btn bg-green-700 text-white' : 'nav-btn';
+
   return (
     <div className="shadow-md w-full">
       <div className="bg-white items-center justify-between py-4 px-7 md:px-10 md:flex">
@@ -17,55 +20,38 @@ const Header = () => {
           className="absolute right-5 top-6 cursor-pointer md:hidden"
         >
           {open ? (
-            <FontAwesomeIcon icon={faX} className="text-2xl text-green-700" />
+            <FontAwesomeIcon icon={faX} className="nav-cross-icon" />
           ) : (
-            <FontAwesomeIcon
-              className="text-2xl text-green-700"
-              icon={faMobileAlt}
-            />
+            <FontAwesomeIcon className="nav-mobile-icon" icon={faMobileAlt} />
           )}
         </div>
         <ul
-          className={`navbar-ul ${open ? 'top-10 opacity-100' : 'top-[-100%]'}`}
+          className={`navbar-ul ${open ? 'top-10 opacity-100' : 'top-[-70%]'}`}
         >
-          {/* <NavLink to="/" className={`nav-btn ${isActive ? 'bg-green-700 text-white' :"" }`}> */}
-          <NavLink
-            to="/"
-            className={({ isActive }) =>
-              isActive ? 'nav-btn bg-green-700 text-white' : 'nav-btn'
-            }
-          >
+          <NavLink to="/" className={({ isActive }) => activeLink(isActive)}>
             Home
           </NavLink>
           <NavLink
             to="/services"
-            className={({ isActive }) =>
-              isActive ? 'nav-btn bg-green-700 text-white' : 'nav-btn'
-            }
+            className={({ isActive }) => activeLink(isActive)}
           >
             Service
           </NavLink>
           <NavLink
             to="/blogs"
-            className={({ isActive }) =>
-              isActive ? 'nav-btn bg-green-700 text-white' : 'nav-btn'
-            }
+            className={({ isActive }) => activeLink(isActive)}
           >
             Blogs
           </NavLink>
           <NavLink
             to="/login"
-            className={({ isActive }) =>
-              isActive ? 'nav-btn bg-green-700 text-white' : 'nav-btn'
-            }
+            className={({ isActive }) => activeLink(isActive)}
           >
             Login
           </NavLink>
           <NavLink
             to="/signup"
-            className={({ isActive }) =>
-              isActive ? 'nav-btn bg-green-700 text-white' : 'nav-btn'
-            }
+            className={({ isActive }) => activeLink(isActive)}
           >
             Signup
           </NavLink>

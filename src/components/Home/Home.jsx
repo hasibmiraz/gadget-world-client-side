@@ -1,7 +1,14 @@
 import React from 'react';
+import Title from '../Title/Title';
+import Banner from './Banner/Banner';
 
 const Home = () => {
-  return <div className="top-12">This is home</div>;
+  return (
+    <div>
+      <Title title="Home" />
+      <Banner />
+    </div>
+  );
 };
 
 export default Home;
