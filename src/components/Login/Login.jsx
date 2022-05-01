@@ -3,6 +3,7 @@ import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import { Link } from 'react-router-dom';
 import auth from '../../firebase.init';
 import Footer from '../Footer/Footer';
+import GoogleSignInBtn from '../GoogleSignInBtn/GoogleSignInBtn';
 import Spinner from '../Spinner/Spinner';
 import Title from '../Title/Title';
 
@@ -32,7 +33,11 @@ const Login = () => {
             }}
           ></div>
 
-          <div className="md:w-1/2 max-w-lg mx-auto my-auto px-4 py-5 shadow-none">
+          <div
+            data-aos="fade-left"
+            data-aos-duration="1200"
+            className="md:w-1/2 max-w-lg mx-auto my-auto px-4 py-5 bg-gray-300 rounded-lg shadow-md"
+          >
             <div className="text-left p-0 font-sans">
               <h1 className=" text-gray-800 text-3xl font-medium">
                 Login To Gadget World
@@ -64,7 +69,7 @@ const Login = () => {
                 <input
                   type="submit"
                   value="Login"
-                  className="py-3 bg-green-500 text-white w-full rounded cursor-pointer hover:bg-green-600"
+                  className="py-3 bg-green-600 text-white w-full rounded cursor-pointer hover:bg-green-500"
                 />
               </div>
             </form>
@@ -76,6 +81,7 @@ const Login = () => {
                 </Link>
               </span>
             </p>
+            <GoogleSignInBtn />
           </div>
         </div>
       )}

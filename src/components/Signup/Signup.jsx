@@ -6,6 +6,7 @@ import {
 import { Link } from 'react-router-dom';
 import auth from '../../firebase.init';
 import Footer from '../Footer/Footer';
+import GoogleSignInBtn from '../GoogleSignInBtn/GoogleSignInBtn';
 import Spinner from '../Spinner/Spinner';
 import Title from '../Title/Title';
 
@@ -16,6 +17,7 @@ const Signup = () => {
 
   const [createUserWithEmailAndPassword, user, loading, error] =
     useCreateUserWithEmailAndPassword(auth, { sendEmailVerification: true });
+
   const [updateProfile, updating] = useUpdateProfile(auth);
 
   const handleCreateUser = async (e) => {
@@ -33,7 +35,6 @@ const Signup = () => {
       await createUserWithEmailAndPassword(email, password);
       await updateProfile(updateProfile({ displayName: name }));
     }
-    console.log(user);
   };
 
   return (
@@ -44,13 +45,10 @@ const Signup = () => {
       ) : (
         <div className="flex min-h-[90vh] bg-white">
           <div
-            className="w-1/2 bg-cover md:block hidden"
-            style={{
-              backgroundImage: `url('https://images.unsplash.com/photo-1553413077-190dd305871c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8d2FyZWhvdXNlfGVufDB8fDB8fA%3D%3D&w=1000&q=80')`,
-            }}
-          ></div>
-
-          <div className="md:w-1/2 max-w-lg mx-auto my-auto px-4 py-5 shadow-none">
+            data-aos="fade-right"
+            data-aos-duration="1200"
+            className="md:w-1/2 max-w-lg mx-auto my-auto px-4 py-5 bg-gray-300 rounded-lg shadow-md"
+          >
             <div className="text-left p-0 font-sans">
               <h1 className=" text-gray-800 text-3xl font-medium">
                 Login To Gadget World
@@ -129,7 +127,14 @@ const Signup = () => {
                 </Link>
               </span>
             </p>
+            <GoogleSignInBtn />
           </div>
+          <div
+            className="w-1/2 bg-cover md:block hidden"
+            style={{
+              backgroundImage: `url('https://images.unsplash.com/photo-1553413077-190dd305871c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8d2FyZWhvdXNlfGVufDB8fDB8fA%3D%3D&w=1000&q=80')`,
+            }}
+          ></div>
         </div>
       )}
       <Footer />
