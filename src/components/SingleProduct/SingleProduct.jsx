@@ -4,9 +4,11 @@ import Footer from '../Footer/Footer';
 import Title from '../Title/Title';
 
 const SingleProduct = () => {
+  const [loading, setLoading] = useState(false);
   const [product, setProduct] = useState({});
   const { productId } = useParams();
   const url = `https://mysterious-gorge-16190.herokuapp.com/${productId}`;
+  const updateUrl = `https://mysterious-gorge-16190.herokuapp.com/update-delivered/${productId}`;
   useEffect(() => {
     fetch(url)
       .then((res) => res.json())
@@ -17,7 +19,8 @@ const SingleProduct = () => {
     product;
 
   const updateQuantity = async () => {
-    await fetch(url, {
+    setLoading(true);
+    await fetch(updateUrl, {
       method: 'PUT',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
@@ -28,6 +31,7 @@ const SingleProduct = () => {
       .then((res) => res.json())
       .then((data) => {
         setProduct(data.result);
+        setLoading(false);
       });
   };
 
@@ -64,10 +68,11 @@ const SingleProduct = () => {
             <div className="flex justify-between items-center">
               <span className="text-3xl font-bold text-gray-900">${price}</span>
               <button
+                disabled={loading}
                 onClick={updateQuantity}
                 className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-2 font-medium rounded-lg text-sm px-5 py-2.5 text-center 0 focus:ring-blue-800"
               >
-                Delivered
+                {loading ? 'Updating...' : 'Delivered'}
               </button>
             </div>
           </div>

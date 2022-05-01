@@ -23,7 +23,14 @@ function App() {
           }
         />
         <Route path="/login" element={<Login />} />
-        <Route path="/inventory/:productId" element={<SingleProduct />} />
+        <Route
+          path="/inventory/:productId"
+          element={
+            <RequireAuth>
+              <SingleProduct />
+            </RequireAuth>
+          }
+        />
         <Route path="/signup" element={<Signup />} />
         <Route path="/blogs" element={<Blogs />} />
       </Routes>
