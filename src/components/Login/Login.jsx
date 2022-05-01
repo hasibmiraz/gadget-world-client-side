@@ -1,6 +1,6 @@
 import React from 'react';
 import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import auth from '../../firebase.init';
 import Footer from '../Footer/Footer';
 import GoogleSignInBtn from '../GoogleSignInBtn/GoogleSignInBtn';
@@ -10,6 +10,14 @@ import Title from '../Title/Title';
 const Login = () => {
   const [signInWithEmailAndPassword, user, loading, error] =
     useSignInWithEmailAndPassword(auth);
+
+  const location = useLocation();
+  const navigate = useNavigate();
+  let from = location.state?.from?.pathname || '/';
+
+  if (user) {
+    navigate(from, { replace: true });
+  }
 
   const handleLogin = (e) => {
     e.preventDefault();
