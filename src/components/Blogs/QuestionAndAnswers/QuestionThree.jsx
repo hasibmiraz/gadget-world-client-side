@@ -2,7 +2,7 @@ import React from 'react';
 
 const QuestionThree = () => {
   return (
-    <div className="my-5">
+    <div className="my-5" data-aos="fade-right" data-aos-duration="1200">
       <h2 className="text-lg">
         <span className="text-gray-500">Question 3:</span> What is the purpose
         of jwt and how does it work?

@@ -2,7 +2,7 @@ import React from 'react';
 
 const QuestionFour = () => {
   return (
-    <div>
+    <div data-aos="fade-left" data-aos-duration="1200">
       <div className="my-5">
         <h2 className="text-lg">
           <span className="text-gray-500">Question 4:</span> When should you use

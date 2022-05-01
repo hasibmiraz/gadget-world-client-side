@@ -2,7 +2,7 @@ import React from 'react';
 
 const QuestionOne = () => {
   return (
-    <>
+    <div data-aos="fade-right" data-aos-duration="1200">
       <div className="my-5">
         <h2 className="text-lg">
           <span className="text-gray-500">Question 1:</span> Difference between
@@ -66,7 +66,7 @@ const QuestionOne = () => {
         </div>
       </div>
       <hr />
-    </>
+    </div>
   );
 };
 
