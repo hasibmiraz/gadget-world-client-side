@@ -2,10 +2,13 @@ import { faMobileAlt, faX } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
+import { useAuthState } from 'react-firebase-hooks/auth';
+import auth from '../../firebase.init';
+import { signOut } from 'firebase/auth';
 
 const Header = () => {
   const [open, setOpen] = useState(false);
-
+  const [user] = useAuthState(auth);
   const activeLink = (active) =>
     active ? 'nav-btn bg-green-700 text-white' : 'nav-btn';
 
@@ -43,18 +46,26 @@ const Header = () => {
           >
             Blogs
           </NavLink>
-          <NavLink
-            to="/login"
-            className={({ isActive }) => activeLink(isActive)}
-          >
-            Login
-          </NavLink>
-          <NavLink
-            to="/signup"
-            className={({ isActive }) => activeLink(isActive)}
-          >
-            Signup
-          </NavLink>
+          {user ? (
+            <button className="nav-btn" onClick={() => signOut(auth)}>
+              Logout
+            </button>
+          ) : (
+            <>
+              <NavLink
+                to="/login"
+                className={({ isActive }) => activeLink(isActive)}
+              >
+                Login
+              </NavLink>
+              <NavLink
+                to="/signup"
+                className={({ isActive }) => activeLink(isActive)}
+              >
+                Signup
+              </NavLink>
+            </>
+          )}
         </ul>
       </div>
     </div>
