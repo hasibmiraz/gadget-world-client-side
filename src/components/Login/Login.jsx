@@ -1,6 +1,7 @@
 import React from 'react';
 import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import auth from '../../firebase.init';
 import Footer from '../Footer/Footer';
 import GoogleSignInBtn from '../GoogleSignInBtn/GoogleSignInBtn';
@@ -24,6 +25,7 @@ const Login = () => {
     const email = e.target.email.value;
     const password = e.target.password.value;
     signInWithEmailAndPassword(email, password);
+    toast('Login successful');
   };
 
   return (
@@ -81,14 +83,21 @@ const Login = () => {
                 />
               </div>
             </form>
-            <p className="" href="/login" data-test="Link">
-              <span className="block  p-5 text-center text-gray-800  text-md">
-                Don't have an account?{' '}
-                <Link className="text-blue-500" to="/signup">
-                  Sign Up
+            <div className="flex flex-col md:flex-row justify-between">
+              <p className="" href="/login" data-test="Link">
+                <span className="block p-5 text-center text-gray-800 text-md">
+                  Don't have an account?{' '}
+                  <Link className="text-blue-500" to="/signup">
+                    Sign Up
+                  </Link>
+                </span>
+              </p>
+              <p className="block p-5" href="/login" data-test="Link">
+                <Link className="text-blue-500" to="/reset-password">
+                  Forgot Password?
                 </Link>
-              </span>
-            </p>
+              </p>
+            </div>
             <GoogleSignInBtn />
           </div>
         </div>

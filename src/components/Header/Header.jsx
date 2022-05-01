@@ -1,19 +1,25 @@
 import { faMobileAlt, faX } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React, { useState } from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import auth from '../../firebase.init';
 import { signOut } from 'firebase/auth';
 
 const Header = () => {
   const [open, setOpen] = useState(false);
+  const navigate = useNavigate();
   const [user] = useAuthState(auth);
   const activeLink = (active) =>
     active ? 'nav-btn bg-green-700 text-white' : 'nav-btn';
 
+  const handleSignOut = () => {
+    signOut(auth);
+    navigate('/');
+  };
+
   return (
-    <div className="shadow-md w-full">
+    <div className="shadow-lg border-b-2 w-full">
       <div className="bg-white items-center justify-between py-4 px-7 md:px-10 md:flex">
         <div className="font-bold text-2xl inline-block text-green-700 cursor-pointer">
           GADGET WORLD
@@ -50,7 +56,7 @@ const Header = () => {
             <div className="flex items-center">
               <button
                 className="nav-btn text-left md:text-center"
-                onClick={() => signOut(auth)}
+                onClick={handleSignOut}
               >
                 Logout
               </button>

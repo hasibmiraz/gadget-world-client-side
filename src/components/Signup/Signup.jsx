@@ -3,7 +3,8 @@ import {
   useCreateUserWithEmailAndPassword,
   useUpdateProfile,
 } from 'react-firebase-hooks/auth';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import auth from '../../firebase.init';
 import Footer from '../Footer/Footer';
 import GoogleSignInBtn from '../GoogleSignInBtn/GoogleSignInBtn';
@@ -20,6 +21,11 @@ const Signup = () => {
 
   const [updateProfile, updating] = useUpdateProfile(auth);
 
+  const location = useLocation();
+  const navigate = useNavigate();
+
+  let from = location.state?.from?.pathname || '/';
+
   const handleCreateUser = async (e) => {
     e.preventDefault();
     const name = e.target.name.value;
@@ -34,6 +40,11 @@ const Signup = () => {
     } else {
       await createUserWithEmailAndPassword(email, password);
       await updateProfile(updateProfile({ displayName: name }));
+      toast('User created successfully!');
+    }
+
+    if (user) {
+      navigate(from, { replace: true });
     }
   };
 

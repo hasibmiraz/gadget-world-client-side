@@ -38,7 +38,7 @@ const SingleProduct = () => {
   return (
     <>
       <Title title="Manage Product" />
-      <div className="min-h-[80vh]">
+      <div className="min-h-[80vh]" data-aos="fade-up" data-aos-duration="1200">
         <div className="max-w-sm bg-green-200 rounded-lg shadow-md my-5 mx-6">
           <a href="!#">
             <img className="p-3 rounded-lg" src={img} alt="" />
@@ -70,7 +70,9 @@ const SingleProduct = () => {
               <button
                 disabled={loading}
                 onClick={updateQuantity}
-                className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-2 font-medium rounded-lg text-sm px-5 py-2.5 text-center 0 focus:ring-blue-800"
+                className={`text-white  focus:ring-2 font-medium rounded-lg text-sm px-5 py-2.5 text-center focus:ring-blue-800 ${
+                  loading ? 'bg-gray-700' : 'bg-blue-700 hover:bg-blue-800'
+                }`}
               >
                 {loading ? 'Updating...' : 'Delivered'}
               </button>
