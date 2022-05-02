@@ -5,7 +5,7 @@ import Header from './components/Header/Header';
 import Home from './components/Home/Home';
 import Login from './components/Login/Login';
 import RequireAuth from './components/RequireAuth/RequireAuth';
-import Services from './components/Services/Services';
+import ManageInventory from './components/Services/ManageInventory';
 import Signup from './components/Signup/Signup';
 import SingleProduct from './components/SingleProduct/SingleProduct';
 import 'react-toastify/dist/ReactToastify.css';
@@ -19,14 +19,7 @@ function App() {
       <ToastContainer />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route
-          path="/services"
-          element={
-            <RequireAuth>
-              <Services />
-            </RequireAuth>
-          }
-        />
+        <Route path="/manage" element={<ManageInventory />} />
         <Route path="/login" element={<Login />} />
         <Route
           path="/inventory/:productId"

@@ -24,17 +24,7 @@ const Footer = () => {
         <div className="mx-6 py-10 text-center md:text-left">
           <div className="grid grid-1 md:grid-cols-3 gap-8">
             <div className="">
-              <h6
-                className="
-            uppercase
-            font-semibold
-            mb-4
-            flex
-            items-center
-            justify-center
-            md:justify-start
-          "
-              >
+              <h6 className="uppercase font-semibold mb-4 flex items-center justify-center md:justify-start">
                 About Gadget World
               </h6>
               <p>

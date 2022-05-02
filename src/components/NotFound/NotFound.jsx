@@ -11,9 +11,6 @@ const NotFound = () => {
         <div>
           <div className="text-center">
             <FontAwesomeIcon
-              data-aos="flip-left"
-              data-aos-easing="ease-out-cubic"
-              data-aos-duration="800"
               className="h-1/6 md:h-1/5 text-gray-400"
               icon={faAllergies}
             />
@@ -23,10 +20,10 @@ const NotFound = () => {
             >
               Error 404 <FontAwesomeIcon icon={faSadCry} />
             </h1>
-            <p className="text-red-400" data-aos="zoom-out-left">
+            <p className="text-red-400">
               We don't have this page in our inventory!
             </p>
-            <div className="mt-6" data-aos="fade-up" data-aos-duration="800">
+            <div className="mt-6">
               <Link to="/">
                 <button
                   type="button"

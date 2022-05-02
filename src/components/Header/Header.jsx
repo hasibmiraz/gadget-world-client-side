@@ -41,10 +41,10 @@ const Header = () => {
             Home
           </NavLink>
           <NavLink
-            to="/services"
+            to="/manage"
             className={({ isActive }) => activeLink(isActive)}
           >
-            Service
+            Manage Items
           </NavLink>
           <NavLink
             to="/blogs"
