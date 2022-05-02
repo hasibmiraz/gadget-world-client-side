@@ -55,7 +55,7 @@ const Header = () => {
           {user ? (
             <div className="flex items-center">
               <button
-                className="nav-btn text-left md:text-center"
+                className="nav-btn text-left md:text-center w-full md:w-auto"
                 onClick={handleSignOut}
               >
                 Logout
@@ -67,7 +67,7 @@ const Header = () => {
                   alt="Avatar"
                 />
               ) : (
-                <div className="relative w-8 h-8 overflow-hidden bg-gray-100 rounded-full dark:bg-gray-600 mx-3">
+                <div className="relative w-8 h-8 overflow-hidden bg-gray-500 rounded-full mx-3 hidden md:block">
                   <svg
                     className="absolute w-10 h-10 text-gray-400 -left-1"
                     fill="currentColor"

@@ -10,6 +10,7 @@ import Signup from './components/Signup/Signup';
 import SingleProduct from './components/SingleProduct/SingleProduct';
 import 'react-toastify/dist/ReactToastify.css';
 import ResetPassword from './components/ResetPassword/ResetPassword';
+import NotFound from './components/NotFound/NotFound';
 
 function App() {
   return (
@@ -38,6 +39,7 @@ function App() {
         <Route path="/signup" element={<Signup />} />
         <Route path="/reset-password" element={<ResetPassword />} />
         <Route path="/blogs" element={<Blogs />} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </div>
   );
