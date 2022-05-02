@@ -12,7 +12,7 @@ const useUpdateDeliveredQuantity = () => {
 
   const { quantity, sold } = product;
 
-  const updateQuantity = async () => {
+  const handleUpdateQuantityAndSold = async () => {
     setLoading(true);
     await fetch(updateUrl, {
       method: 'PUT',
@@ -28,7 +28,7 @@ const useUpdateDeliveredQuantity = () => {
         setLoading(false);
       });
   };
-  return [product, updateQuantity, loading];
+  return [product, setProduct, handleUpdateQuantityAndSold, loading];
 };
 
 export default useUpdateDeliveredQuantity;
