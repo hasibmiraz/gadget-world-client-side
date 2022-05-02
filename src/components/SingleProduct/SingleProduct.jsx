@@ -12,7 +12,7 @@ const SingleProduct = () => {
     useUpdateDeliveredQuantity();
   const { productId } = useParams();
 
-  const updateQtyUrl = `http://localhost:5000/update-stock/${productId}`;
+  const updateQtyUrl = `https://mysterious-gorge-16190.herokuapp.com/update-stock/${productId}`;
 
   let { _id, img, name, supplierName, description, price, quantity, sold } =
     product;
