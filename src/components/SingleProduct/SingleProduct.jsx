@@ -1,39 +1,14 @@
-import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import React from 'react';
+
+import useUpdateDeliveredQuantity from '../../hooks/useUpdateDeliveredQuantity';
 import Footer from '../Footer/Footer';
 import Title from '../Title/Title';
 
 const SingleProduct = () => {
-  const [loading, setLoading] = useState(false);
-  const [product, setProduct] = useState({});
-  const { productId } = useParams();
-  const url = `https://mysterious-gorge-16190.herokuapp.com/${productId}`;
-  const updateUrl = `https://mysterious-gorge-16190.herokuapp.com/update-delivered/${productId}`;
-  useEffect(() => {
-    fetch(url)
-      .then((res) => res.json())
-      .then((data) => setProduct(data.product));
-  }, [url]);
+  const [product, updateQuantity, loading] = useUpdateDeliveredQuantity();
 
   let { _id, img, name, supplierName, description, price, quantity, sold } =
     product;
-
-  const updateQuantity = async () => {
-    setLoading(true);
-    await fetch(updateUrl, {
-      method: 'PUT',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        quantity: quantity - 1,
-        sold: sold + 1,
-      }),
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        setProduct(data.result);
-        setLoading(false);
-      });
-  };
 
   return (
     <>
