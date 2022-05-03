@@ -36,10 +36,10 @@ const GoogleSignInBtn = () => {
             Signing in{' '}
             <span>
               <div
-                class="spinner-border animate-spin inline-block border-white w-3 h-3 border-1 rounded-full"
+                className="spinner-border animate-spin inline-block border-white w-3 h-3 border-1 rounded-full"
                 role="status"
               >
-                <span class="visually-hidden">Loading...</span>
+                <span className="visually-hidden">Loading...</span>
               </div>
             </span>
           </button>
