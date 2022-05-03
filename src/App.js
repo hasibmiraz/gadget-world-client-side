@@ -11,6 +11,7 @@ import SingleProduct from './components/SingleProduct/SingleProduct';
 import 'react-toastify/dist/ReactToastify.css';
 import ResetPassword from './components/ResetPassword/ResetPassword';
 import NotFound from './components/NotFound/NotFound';
+import AddItem from './components/AddItem/AddItem';
 
 function App() {
   return (
@@ -30,6 +31,14 @@ function App() {
           }
         />
         <Route path="/signup" element={<Signup />} />
+        <Route
+          path="/additem"
+          element={
+            <RequireAuth>
+              <AddItem />
+            </RequireAuth>
+          }
+        />
         <Route path="/reset-password" element={<ResetPassword />} />
         <Route path="/blogs" element={<Blogs />} />
         <Route path="*" element={<NotFound />} />

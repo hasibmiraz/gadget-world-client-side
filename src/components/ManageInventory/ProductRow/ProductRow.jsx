@@ -9,7 +9,7 @@ const ProductRow = ({ product }) => {
   const navigate = useNavigate();
 
   const handleDeleteProduct = async (id) => {
-    const url = `http://localhost:5000/delete-product/${id}`;
+    const url = `https://mysterious-gorge-16190.herokuapp.com/delete-product/${id}`;
 
     await fetch(url, {
       method: 'DELETE',
