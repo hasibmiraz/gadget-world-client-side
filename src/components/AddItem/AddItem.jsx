@@ -2,14 +2,17 @@ import React, { useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { toast } from 'react-toastify';
 import auth from '../../firebase.init';
+import Footer from '../Footer/Footer';
 import Title from '../Title/Title';
 
 const AddItem = () => {
   const [user] = useAuthState(auth);
   const [error, setError] = useState('');
+  const [loading, setLoading] = useState(false);
 
   const handleCreateProduct = (e) => {
     e.preventDefault();
+    setLoading(true);
     const url = `https://mysterious-gorge-16190.herokuapp.com/`;
     if (+e.target.sold.value < 0) {
       setError('Sold items cannot be less than zero');
@@ -34,6 +37,7 @@ const AddItem = () => {
         .then(() => {
           e.target.reset();
           toast('Product created successfully');
+          setLoading(false);
         });
     }
   };
@@ -144,14 +148,33 @@ const AddItem = () => {
             ></textarea>
           </div>
           <p className="text-red-600">{error}</p>
-          <button
-            type="submit"
-            className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center"
-          >
-            Add Product
-          </button>
+          {!loading && (
+            <button
+              type="submit"
+              className="text-white hover:scale-95 duration-200 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center"
+            >
+              Add Product
+            </button>
+          )}
+          {loading && (
+            <button
+              type="submit"
+              className="text-white bg-gray-700 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center"
+            >
+              Loading{' '}
+              <span>
+                <div
+                  className="spinner-border animate-spin inline-block border-white w-3 h-3 border-1 rounded-full"
+                  role="status"
+                >
+                  <span className="visually-hidden">Loading...</span>
+                </div>
+              </span>
+            </button>
+          )}
         </form>
       </div>
+      <Footer />
     </>
   );
 };
