@@ -5,7 +5,7 @@ import Header from './components/Header/Header';
 import Home from './components/Home/Home';
 import Login from './components/Login/Login';
 import RequireAuth from './components/RequireAuth/RequireAuth';
-import ManageInventory from './components/Services/ManageInventory';
+import ManageInventory from './components/ManageInventory/ManageInventory';
 import Signup from './components/Signup/Signup';
 import SingleProduct from './components/SingleProduct/SingleProduct';
 import 'react-toastify/dist/ReactToastify.css';

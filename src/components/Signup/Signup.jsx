@@ -67,7 +67,7 @@ const Signup = () => {
             </div>
             <form className="p-0" onSubmit={handleCreateUser}>
               <div className="mt-5">
-                {/* <!-- <label for="email" className="sc-bqyKva ePvcBv">Email</label> --> */}
+                {/* <!-- <labelhtmlFor="email" className="sc-bqyKva ePvcBv">Email</label> --> */}
                 <input
                   name="name"
                   type="text"
@@ -77,7 +77,7 @@ const Signup = () => {
                 />
               </div>
               <div className="mt-5">
-                {/* <!-- <label for="email" className="sc-bqyKva ePvcBv">Email</label> --> */}
+                {/* <!-- <labelhtmlFor="email" className="sc-bqyKva ePvcBv">Email</label> --> */}
                 <input
                   type="text"
                   name="email"
