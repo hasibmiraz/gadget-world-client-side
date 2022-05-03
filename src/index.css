@@ -67,4 +67,16 @@
   .stock-update-btn {
     @apply text-white w-full focus:ring-2 font-medium rounded-lg text-sm px-5 py-2.5 text-center focus:ring-blue-800;
   }
+
+  .inventory-thead {
+    @apply text-sm font-medium text-white px-6 py-4;
+  }
+
+  .inventory-img {
+    @apply flex justify-center px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900;
+  }
+
+  .inventory-td {
+    @apply text-sm text-gray-900 px-6 py-4 whitespace-nowrap;
+  }
 }
