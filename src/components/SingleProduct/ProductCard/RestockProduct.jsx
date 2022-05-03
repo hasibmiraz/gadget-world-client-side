@@ -1,8 +1,10 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const RestockProduct = ({ handleRestockQuantity, stockLoading }) => {
+  const navigate = useNavigate();
   return (
-    <div>
+    <div className="bg-gray-300 rounded-xl mx-4 my-auto">
       <form onSubmit={handleRestockQuantity}>
         <div className="flex justify-center px-1 md:px-3 my-3">
           <div className="mb-3 xl:w-96">
@@ -27,7 +29,7 @@ const RestockProduct = ({ handleRestockQuantity, stockLoading }) => {
             <button
               disabled={stockLoading}
               type="submit"
-              className="stock-update-btn bg-blue-700 hover:bg-blue-800 cursor-pointer hover:scale-95 duration-200"
+              className="stock-update-btn bg-green-700 hover:bg-green-800 cursor-pointer hover:scale-95 duration-200"
             >
               Update Quantity
             </button>
@@ -50,6 +52,15 @@ const RestockProduct = ({ handleRestockQuantity, stockLoading }) => {
           )}
         </div>
       </form>
+      <hr className="border-gray-600" />
+      <div className="flex justify-center">
+        <button
+          onClick={() => navigate('/manage')}
+          className="w-3/5 bg-green-700 px-5 py-2 text-md text-white rounded-md mx-auto hover:bg-green-800 cursor-pointer hover:scale-95 duration-200 my-5"
+        >
+          Manage Inventory
+        </button>
+      </div>
     </div>
   );
 };

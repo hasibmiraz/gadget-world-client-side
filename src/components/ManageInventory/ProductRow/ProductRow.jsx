@@ -1,9 +1,10 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import useAllProducts from '../../../hooks/useAllProducts';
+import Spinner from '../../Spinner/Spinner';
 
 const ProductRow = ({ product }) => {
-  const [products, setProducts] = useAllProducts();
+  const [products, setProducts, loading] = useAllProducts();
 
   const { _id, img, name, supplierName, price, quantity, sold } = product;
   const navigate = useNavigate();
@@ -24,37 +25,41 @@ const ProductRow = ({ product }) => {
 
   return (
     <>
-      <tr className="bg-white border-b border-x-2">
-        <td className="inventory-img">
-          <img
-            src={img}
-            className="rounded-full w-7 p-1 bg-green-500"
-            alt="Avatar"
-          />
-        </td>
-        <td className="inventory-td text-left font-light">{name}</td>
-        <td className="inventory-td text-left font-light">{supplierName}</td>
-        <td className="inventory-td font-light">{price}</td>
-        <td className="inventory-td font-light">{quantity}</td>
-        <td className="inventory-td font-bold">{sold}</td>
-        <td className="inventory-td space-x-12 font-light">
-          <span
-            className="font-bold text-blue-600 cursor-pointer"
-            onClick={() => navigate(`/inventory/${_id}`)}
-          >
-            Edit
-          </span>
-        </td>
-        <td className="inventory-td space-x-12">
-          <span
-            className="font-bold text-red-600 cursor-pointer"
-            data-bs-toggle="modal"
-            data-bs-target="#exampleModalCenter"
-          >
-            Delete
-          </span>
-        </td>
-      </tr>
+      {loading ? (
+        <Spinner />
+      ) : (
+        <tr className="bg-white border-b border-x-2">
+          <td className="inventory-img">
+            <img
+              src={img}
+              className="rounded-full w-7 p-1 bg-green-500"
+              alt="Avatar"
+            />
+          </td>
+          <td className="inventory-td text-left font-light">{name}</td>
+          <td className="inventory-td text-left font-light">{supplierName}</td>
+          <td className="inventory-td font-light">{price}</td>
+          <td className="inventory-td font-light">{quantity}</td>
+          <td className="inventory-td font-bold">{sold}</td>
+          <td className="inventory-td space-x-12 font-light">
+            <span
+              className="font-bold text-blue-600 cursor-pointer"
+              onClick={() => navigate(`/inventory/${_id}`)}
+            >
+              Edit
+            </span>
+          </td>
+          <td className="inventory-td space-x-12">
+            <span
+              className="font-bold text-red-600 cursor-pointer"
+              data-bs-toggle="modal"
+              data-bs-target="#exampleModalCenter"
+            >
+              Delete
+            </span>
+          </td>
+        </tr>
+      )}
       {/* Modal */}
       <div
         className="modal fade fixed top-0 left-0 hidden w-full h-full outline-none overflow-x-hidden overflow-y-auto"

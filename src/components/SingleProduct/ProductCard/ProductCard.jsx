@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import useUpdateDeliveredQuantity from '../../../hooks/useUpdateDeliveredQuantity';
-import ProductUpdateForm from './ProductUpdateForm';
 import RestockProduct from './RestockProduct';
 
 const ProductCard = () => {
@@ -36,86 +35,84 @@ const ProductCard = () => {
         .then((data) => {
           setProduct(data.result);
           e.target.reset();
-          setStockLoading(false);
           toast('Stock updated successfully!');
+          setStockLoading(false);
         });
     }
   };
 
   return (
     <>
-      <div className="grid grid-cols-1 md:grid-cols-3">
-        <div className="mx-auto">
-          <div
-            className="min-h-[80vh]"
-            data-aos="fade-up"
-            data-aos-duration="1200"
-          >
-            <div className="max-w-sm bg-green-200 rounded-lg shadow-md my-5 mx-6">
-              <a href="!#">
-                <img className="p-3 rounded-lg" src={img} alt="" />
-              </a>
-              <div className="px-5 pb-2">
-                <h5 className="text-xl font-semibold tracking-tight text-gray-900">
-                  {name}
-                </h5>
-                <p className="text-md">
-                  By{' '}
-                  <span className="text-blue-800 font-bold">
-                    {supplierName}
-                  </span>
-                </p>
-                <p className="text-md my-2">
-                  <span className="font-bold text-gray-700">Product ID:</span>{' '}
-                  {_id}
-                </p>
-                <p className="text-md my-2">
-                  <span className="font-bold text-gray-700">Description:</span>{' '}
-                  {description}
-                </p>
-                <p className="text-md my-2">
-                  <span className="font-bold text-gray-700">Quantity:</span>{' '}
-                  {quantity}
-                </p>
-                <p className="text-md my-2">
-                  <span className="font-bold text-gray-700">Sold:</span> {sold}
-                </p>
-                <div className="flex justify-between items-center">
-                  <span className="text-3xl font-bold text-gray-900">
-                    ${price}
-                  </span>
-                  {loading && (
-                    <button disabled className="delivered-form-btn bg-gray-700">
-                      Updating{' '}
-                      <span>
-                        <div
-                          className="spinner-border animate-spin inline-block border-white w-3 h-3 border-1 rounded-full"
-                          role="status"
-                        >
-                          <span className="visually-hidden">Loading...</span>
-                        </div>
-                      </span>
-                    </button>
-                  )}
-                  {!loading && (
-                    <button
-                      onClick={handleUpdateQuantityAndSold}
-                      className="delivered-form-btn bg-blue-700 hover:bg-blue-800"
-                    >
-                      Delivered
-                    </button>
-                  )}
-                </div>
+      <div class="flex flex-col md:flex-row justify-center my-12 mx-4 md:mx-auto">
+        <div class="flex flex-col md:flex-row w-3/5 rounded-lg bg-gray-200 p-3 shadow-lg">
+          <img
+            class="h-96 w-auto object-cover md:w-96 rounded-md"
+            src={img}
+            alt=""
+          />
+          <div class="p-6 flex flex-col justify-start">
+            <h5 class="px-5 text-gray-900 font-bold text-xl mb-2 underline">
+              Product Details
+            </h5>
+            <div className="px-5 pb-2">
+              <h5 className="text-xl font-semibold tracking-tight text-gray-900">
+                {name}
+              </h5>
+              <p className="text-md">
+                By{' '}
+                <span className="text-blue-800 font-bold">{supplierName}</span>
+              </p>
+              <p className="text-md my-2">
+                <span className="font-bold text-gray-700">Product ID:</span>{' '}
+                {_id}
+              </p>
+              <p className="text-md my-2">
+                <span className="font-bold text-gray-700">Description:</span>{' '}
+                {description}
+              </p>
+              <p className="text-md my-2">
+                <span className="font-bold text-gray-700">Quantity:</span>{' '}
+                {quantity}
+              </p>
+              <p className="text-md my-2">
+                <span className="font-bold text-gray-700">Sold:</span> {sold}
+              </p>
+              <div className="flex justify-between items-center">
+                <span className="text-3xl font-bold text-gray-900">
+                  ${price}
+                </span>
+                {loading && (
+                  <button
+                    disabled
+                    className="delivered-form-btn w-3/5 bg-gray-700"
+                  >
+                    Updating{' '}
+                    <span>
+                      <div
+                        className="spinner-border animate-spin inline-block border-white w-3 h-3 border-1 rounded-full"
+                        role="status"
+                      >
+                        <span className="visually-hidden">Loading...</span>
+                      </div>
+                    </span>
+                  </button>
+                )}
+                {!loading && (
+                  <button
+                    onClick={handleUpdateQuantityAndSold}
+                    className="delivered-form-btn w-3/5 hover:scale-95 duration-200 bg-green-700 hover:bg-green-800"
+                  >
+                    Delivered
+                  </button>
+                )}
               </div>
-              <hr className="m-3 border-gray-500" />
-              <RestockProduct
-                handleRestockQuantity={handleRestockQuantity}
-                stockLoading={stockLoading}
-              />
             </div>
           </div>
         </div>
-        <ProductUpdateForm />
+        <RestockProduct
+          handleRestockQuantity={handleRestockQuantity}
+          stockLoading={stockLoading}
+        />
       </div>
     </>
   );

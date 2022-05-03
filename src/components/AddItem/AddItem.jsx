@@ -46,7 +46,7 @@ const AddItem = () => {
     <>
       <Title title="Add Product" />
       <h2 className="text-4xl mt-5 text-gray-600 text-center">Add Item</h2>
-      <div className="w-3/5 mx-auto my-6 bg-green-300 rounded-md p-8">
+      <div className="w-4/5 md:w-3/5 mx-auto my-6 bg-green-300 rounded-md p-8">
         <form onSubmit={handleCreateProduct}>
           <div className="grid gap-6 mb-6 lg:grid-cols-2">
             <div>

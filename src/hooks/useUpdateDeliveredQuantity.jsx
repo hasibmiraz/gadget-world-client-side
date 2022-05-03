@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useParams } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import useSingleProduct from './useSingleProduct';
 
 const useUpdateDeliveredQuantity = () => {
@@ -26,6 +27,7 @@ const useUpdateDeliveredQuantity = () => {
       .then((data) => {
         setProduct(data.result);
         setLoading(false);
+        toast('Product delivered successfully!');
       });
   };
   return [product, setProduct, handleUpdateQuantityAndSold, loading];
