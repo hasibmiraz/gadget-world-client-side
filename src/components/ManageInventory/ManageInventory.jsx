@@ -1,6 +1,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import useAllProducts from '../../hooks/useAllProducts';
+import Footer from '../Footer/Footer';
 import Title from '../Title/Title';
 import ProductRow from './ProductRow/ProductRow';
 
@@ -72,6 +73,7 @@ const ManageInventory = () => {
           </div>
         </div>
       </div>
+      <Footer />
     </>
   );
 };

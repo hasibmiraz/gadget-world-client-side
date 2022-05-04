@@ -1,7 +1,8 @@
 import React from 'react';
 import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-import { toast } from 'react-toastify';
+// import { toast } from 'react-toastify';
+import axios from 'axios';
 import auth from '../../firebase.init';
 import Footer from '../Footer/Footer';
 import GoogleSignInBtn from '../GoogleSignInBtn/GoogleSignInBtn';
@@ -17,15 +18,18 @@ const Login = () => {
   let from = location.state?.from?.pathname || '/';
 
   if (user) {
-    navigate(from, { replace: true });
+    // navigate(from, { replace: true });
   }
 
-  const handleLogin = (e) => {
+  const handleLogin = async (e) => {
     e.preventDefault();
     const email = e.target.email.value;
     const password = e.target.password.value;
-    signInWithEmailAndPassword(email, password);
-    toast('Login successful');
+    await signInWithEmailAndPassword(email, password);
+    const response = await axios.post('http://localhost:5000/get-token', {
+      email,
+    });
+    localStorage.setItem('accessToken', response.data.accessToken);
   };
 
   return (
@@ -46,7 +50,7 @@ const Login = () => {
           <div
             data-aos="fade-left"
             data-aos-duration="1200"
-            className="md:w-1/2 max-w-lg mx-auto my-auto px-4 py-5 bg-gray-300 rounded-lg shadow-md"
+            className="md:w-1/2 max-w-lg mx-auto my-3 px-4 py-5 bg-gray-300 rounded-lg shadow-md"
           >
             <div className="text-left p-0 font-sans">
               <h1 className=" text-gray-800 text-3xl font-medium">
@@ -83,7 +87,7 @@ const Login = () => {
                 />
               </div>
             </form>
-            <div className="flex flex-col md:flex-row justify-between">
+            <div className="flex flex-col md:flex-row justify-between items-center">
               <p className="" href="/login" data-test="Link">
                 <span className="block p-5 text-center text-gray-800 text-md">
                   Don't have an account?{' '}
