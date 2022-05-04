@@ -46,7 +46,7 @@ const AddItem = () => {
     <>
       <Title title="Add Product" />
       <h2 className="text-4xl mt-5 text-gray-600 text-center">Add Item</h2>
-      <div className="w-4/5 md:w-3/5 mx-auto my-6 bg-green-300 rounded-md p-8">
+      <div className="w-4/5 md:w-3/5 mx-auto my-6 bg-gray-300 rounded-md p-8">
         <form onSubmit={handleCreateProduct}>
           <div className="grid gap-6 mb-6 lg:grid-cols-2">
             <div>
@@ -60,7 +60,7 @@ const AddItem = () => {
                 type="text"
                 id="productName"
                 name="productName"
-                className="bg-gray-50 border border-green-300 text-gray-900 text-sm rounded-lg focus:ring-green-500 focus:border-green-500 block w-full p-2.5"
+                className="add-item-input"
                 placeholder="Product"
                 required
               />
@@ -77,7 +77,7 @@ const AddItem = () => {
                 type="number"
                 id="price"
                 name="price"
-                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                className="add-item-input"
                 placeholder="Price"
                 required
               />
@@ -94,7 +94,7 @@ const AddItem = () => {
                 type="number"
                 id="quantity"
                 name="quantity"
-                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                className="add-item-input"
                 placeholder="Quantity"
                 required
               />
@@ -110,7 +110,7 @@ const AddItem = () => {
               <input
                 type="number"
                 id="sold"
-                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                className="add-item-input"
                 placeholder="Sold"
                 required
               />
@@ -127,7 +127,7 @@ const AddItem = () => {
               type="url"
               id="img"
               name="img"
-              className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+              className="add-item-input"
               placeholder="url.com"
             />
           </div>
@@ -143,16 +143,13 @@ const AddItem = () => {
               name="description"
               rows="3"
               style={{ resize: 'none' }}
-              className="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500"
+              className="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-green-300 focus:ring-green-500 focus:border-green-500 focus:outline-none"
               placeholder="Description"
             ></textarea>
           </div>
           <p className="text-red-600">{error}</p>
           {!loading && (
-            <button
-              type="submit"
-              className="text-white hover:scale-95 duration-200 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center"
-            >
+            <button type="submit" className="add-item-btn">
               Add Product
             </button>
           )}
