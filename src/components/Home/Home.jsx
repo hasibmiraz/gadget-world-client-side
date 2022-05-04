@@ -4,6 +4,7 @@ import Title from '../Title/Title';
 import Banner from './Banner/Banner';
 import ManageInventoryBtn from './ManageInventoryBtn/ManageInventoryBtn';
 import ReleventProducts from './ReleventProducts/ReleventProducts';
+import Statistics from './Statistics/Statistics';
 
 const Home = () => {
   return (
@@ -12,6 +13,7 @@ const Home = () => {
       <Banner />
       <ReleventProducts />
       <ManageInventoryBtn />
+      <Statistics />
       <Footer />
     </div>
   );
