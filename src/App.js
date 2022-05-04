@@ -12,6 +12,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import ResetPassword from './components/ResetPassword/ResetPassword';
 import NotFound from './components/NotFound/NotFound';
 import AddItem from './components/AddItem/AddItem';
+import MyItem from './components/MyItem/MyItem';
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/manage" element={<ManageInventory />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/myitems" element={<MyItem />} />
         <Route
           path="/inventory/:productId"
           element={

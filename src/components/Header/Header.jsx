@@ -49,6 +49,12 @@ const Header = () => {
                 Manage Items
               </NavLink>
               <NavLink
+                to="/myitems"
+                className={({ isActive }) => activeLink(isActive)}
+              >
+                My Items
+              </NavLink>
+              <NavLink
                 to="/additem"
                 className={({ isActive }) => activeLink(isActive)}
               >
