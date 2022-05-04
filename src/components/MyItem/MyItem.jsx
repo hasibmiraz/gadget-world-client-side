@@ -5,16 +5,19 @@ import Title from '../Title/Title';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { signOut } from 'firebase/auth';
+import Spinner from '../Spinner/Spinner';
 
 const MyItem = () => {
   const [user] = useAuthState(auth);
   const [myProducts, setMyProducts] = useState([]);
+  const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
   useEffect(() => {
     const getMyProducts = async () => {
-      const url = `https://mysterious-gorge-16190.herokuapp.com/products?email=${user.email}`;
+      const url = `https://mysterious-gorge-16190.herokuapp.com/products?email=${user?.email}`;
       try {
+        setLoading(true);
         const { data } = await axios.get(url, {
           headers: {
             authorization: `Bearer ${localStorage.getItem('accessToken')}`,
@@ -23,6 +26,7 @@ const MyItem = () => {
 
         console.log(data);
         setMyProducts(data.result);
+        setLoading(false);
       } catch (error) {
         if (error.response.status === 401 || error.response.status === 403) {
           signOut(auth);
@@ -64,86 +68,92 @@ const MyItem = () => {
               Add New Item
             </button>
           </div>
-          <div className="flex flex-col">
-            <div className="overflow-x-auto sm:mx-6 lg:mx-8">
-              <div className="py-4 inline-block min-w-full sm:px-6 lg:px-8">
-                <div className="overflow-hidden">
-                  <table className="min-w-full text-center">
-                    <thead className="border-b bg-green-800">
-                      <tr>
-                        <th scope="col" className="inventory-thead">
-                          Image
-                        </th>
-                        <th scope="col" className="inventory-thead text-left">
-                          Name
-                        </th>
-                        <th scope="col" className="inventory-thead">
-                          Unit Price
-                        </th>
-                        <th scope="col" className="inventory-thead">
-                          Quantity
-                        </th>
-                        <th scope="col" className="inventory-thead">
-                          Sold
-                        </th>
-                        <th scope="col" className="inventory-thead">
-                          Edit
-                        </th>
-                        <th
-                          scope="col"
-                          className="text-sm font-medium text-white px-0 py-4"
-                        >
-                          Delete
-                        </th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      {myProducts.map(
-                        ({ _id, img, name, price, quantity, sold }) => (
-                          <tr
-                            key={_id}
-                            className="bg-white border-b border-x-2"
+          {loading ? (
+            <Spinner />
+          ) : (
+            <div className="flex flex-col">
+              <div className="overflow-x-auto sm:mx-6 lg:mx-8">
+                <div className="py-4 inline-block min-w-full sm:px-6 lg:px-8">
+                  <div className="overflow-hidden">
+                    <table className="min-w-full text-center">
+                      <thead className="border-b bg-green-800">
+                        <tr>
+                          <th scope="col" className="inventory-thead">
+                            Image
+                          </th>
+                          <th scope="col" className="inventory-thead text-left">
+                            Name
+                          </th>
+                          <th scope="col" className="inventory-thead">
+                            Unit Price
+                          </th>
+                          <th scope="col" className="inventory-thead">
+                            Quantity
+                          </th>
+                          <th scope="col" className="inventory-thead">
+                            Sold
+                          </th>
+                          <th scope="col" className="inventory-thead">
+                            Edit
+                          </th>
+                          <th
+                            scope="col"
+                            className="text-sm font-medium text-white px-0 py-4"
                           >
-                            <td className="inventory-img">
-                              <img
-                                src={img}
-                                className="rounded-full w-7 p-1 bg-green-500"
-                                alt="Avatar"
-                              />
-                            </td>
-                            <td className="inventory-td text-left font-light">
-                              {name}
-                            </td>
-                            <td className="inventory-td font-light">{price}</td>
-                            <td className="inventory-td font-light">
-                              {quantity}
-                            </td>
-                            <td className="inventory-td font-bold">{sold}</td>
-                            <td className="inventory-td space-x-12 font-light">
-                              <span
-                                className="font-bold text-blue-600 cursor-pointer"
-                                onClick={() => navigate(`/inventory/${_id}`)}
-                              >
-                                Edit
-                              </span>
-                            </td>
-                            <td className="inventory-td space-x-12">
-                              <span
-                                onClick={() => handleDeleteProduct(_id)}
-                                className="font-bold text-red-600 cursor-pointer"
-                              >
-                                Delete
-                              </span>
-                            </td>
-                          </tr>
-                        )
-                      )}
-                    </tbody>
-                  </table>
+                            Delete
+                          </th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {myProducts.map(
+                          ({ _id, img, name, price, quantity, sold }) => (
+                            <tr
+                              key={_id}
+                              className="bg-white border-b border-x-2"
+                            >
+                              <td className="inventory-img">
+                                <img
+                                  src={img}
+                                  className="rounded-full w-7 p-1 bg-green-500"
+                                  alt="Avatar"
+                                />
+                              </td>
+                              <td className="inventory-td text-left font-light">
+                                {name}
+                              </td>
+                              <td className="inventory-td font-light">
+                                {price}
+                              </td>
+                              <td className="inventory-td font-light">
+                                {quantity}
+                              </td>
+                              <td className="inventory-td font-bold">{sold}</td>
+                              <td className="inventory-td space-x-12 font-light">
+                                <span
+                                  className="font-bold text-blue-600 cursor-pointer"
+                                  onClick={() => navigate(`/inventory/${_id}`)}
+                                >
+                                  Edit
+                                </span>
+                              </td>
+                              <td className="inventory-td space-x-12">
+                                <span
+                                  onClick={() => handleDeleteProduct(_id)}
+                                  className="font-bold text-red-600 cursor-pointer"
+                                >
+                                  Delete
+                                </span>
+                              </td>
+                            </tr>
+                          )
+                        )}
+                      </tbody>
+                    </table>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
+          )}
         </div>
       </div>
     </>
