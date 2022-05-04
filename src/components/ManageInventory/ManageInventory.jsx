@@ -3,11 +3,28 @@ import { useNavigate } from 'react-router-dom';
 import useAllProducts from '../../hooks/useAllProducts';
 import Footer from '../Footer/Footer';
 import Title from '../Title/Title';
-import ProductRow from './ProductRow/ProductRow';
 
 const ManageInventory = () => {
-  const [products] = useAllProducts();
+  const [products, setProducts] = useAllProducts();
   const navigate = useNavigate();
+
+  const handleDeleteProduct = async (id) => {
+    const url = `https://mysterious-gorge-16190.herokuapp.com/delete-product/${id}`;
+    const confirmDelete = window.confirm(
+      'Are you sure you want to delete the item?'
+    );
+    if (confirmDelete) {
+      await fetch(url, {
+        method: 'DELETE',
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          console.log(data);
+          const restProducts = products.filter((product) => product._id !== id);
+          setProducts(restProducts);
+        });
+    }
+  };
 
   return (
     <>
@@ -62,9 +79,59 @@ const ManageInventory = () => {
                       </tr>
                     </thead>
                     <tbody>
-                      {products.map((product) => (
-                        <ProductRow key={product._id} product={product} />
-                      ))}
+                      {products.map(
+                        ({
+                          _id,
+                          img,
+                          name,
+                          supplierName,
+                          price,
+                          quantity,
+                          sold,
+                        }) => (
+                          <tr
+                            className="bg-white border-b border-x-2"
+                            key={_id}
+                          >
+                            <td className="inventory-img">
+                              <img
+                                src={img}
+                                className="rounded-full w-7 p-1 bg-green-500"
+                                alt="Avatar"
+                              />
+                            </td>
+                            <td className="inventory-td text-left font-light">
+                              {name}
+                            </td>
+                            <td className="inventory-td text-left font-light">
+                              {supplierName}
+                            </td>
+                            <td className="inventory-td font-light">{price}</td>
+                            <td className="inventory-td font-light">
+                              {quantity}
+                            </td>
+                            <td className="inventory-td font-bold">{sold}</td>
+                            <td className="inventory-td space-x-12 font-light">
+                              <span
+                                className="font-bold text-blue-600 cursor-pointer"
+                                onClick={() => navigate(`/inventory/${_id}`)}
+                              >
+                                Edit
+                              </span>
+                            </td>
+                            <td className="inventory-td space-x-12">
+                              <span
+                                onClick={() => handleDeleteProduct(_id)}
+                                className="font-bold text-red-600 cursor-pointer"
+                                data-bs-toggle="modal"
+                                data-bs-target="#exampleModalCenter"
+                              >
+                                Delete
+                              </span>
+                            </td>
+                          </tr>
+                        )
+                      )}
                     </tbody>
                   </table>
                 </div>
