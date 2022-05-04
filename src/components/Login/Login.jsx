@@ -8,6 +8,7 @@ import Footer from '../Footer/Footer';
 import GoogleSignInBtn from '../GoogleSignInBtn/GoogleSignInBtn';
 import Spinner from '../Spinner/Spinner';
 import Title from '../Title/Title';
+import { toast } from 'react-toastify';
 
 const Login = () => {
   const [signInWithEmailAndPassword, user, loading, error] =

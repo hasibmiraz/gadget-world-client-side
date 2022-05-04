@@ -3,6 +3,8 @@ import auth from '../../firebase.init';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import Title from '../Title/Title';
 import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
+import { signOut } from 'firebase/auth';
 
 const MyItem = () => {
   const [user] = useAuthState(auth);
@@ -11,18 +13,25 @@ const MyItem = () => {
 
   useEffect(() => {
     const getMyProducts = async () => {
-      const email = user?.email;
-
-      await fetch(
-        `https://mysterious-gorge-16190.herokuapp.com/products?email=${email}`
-      )
-        .then((res) => res.json())
-        .then((data) => {
-          setMyProducts(data.result);
+      const url = `http://localhost:5000/products?email=${user.email}`;
+      try {
+        const { data } = await axios.get(url, {
+          headers: {
+            authorization: `Bearer ${localStorage.getItem('accessToken')}`,
+          },
         });
+
+        console.log(data);
+        setMyProducts(data.result);
+      } catch (error) {
+        if (error.response.status === 401 || error.response.status === 403) {
+          signOut(auth);
+          navigate('/login');
+        }
+      }
     };
     getMyProducts();
-  }, [user]);
+  }, [user.email]);
 
   const handleDeleteProduct = async (id) => {
     const url = `https://mysterious-gorge-16190.herokuapp.com/delete-product/${id}`;
