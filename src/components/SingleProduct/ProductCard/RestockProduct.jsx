@@ -58,7 +58,7 @@ const RestockProduct = ({ handleRestockQuantity, stockLoading }) => {
           onClick={() => navigate('/manage')}
           className="w-3/5 bg-green-700 px-5 py-2 text-md text-white rounded-md mx-auto hover:bg-green-800 cursor-pointer hover:scale-95 duration-200 my-5"
         >
-          Manage Inventory
+          Manage Inventories
         </button>
       </div>
     </div>
