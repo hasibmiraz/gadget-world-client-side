@@ -11,7 +11,11 @@ const Statistics = () => {
   return (
     <div className="bg-gray-200 w-full my-2 md:my-5 py-4">
       <div className="grid grid-cols-1 md:grid-cols-4 px-2 md:px-24">
-        <div className="flex flex-col items-center my-5 mx-3">
+        <div
+          className="flex flex-col items-center my-5 mx-3"
+          data-aos="zoom-out"
+          data-aos-duration="800"
+        >
           <FontAwesomeIcon
             icon={faDollarSign}
             className="h-28 my-4 text-black"
@@ -24,7 +28,11 @@ const Statistics = () => {
             day regularly.
           </p>
         </div>
-        <div className="flex flex-col items-center my-5 mx-3">
+        <div
+          className="flex flex-col items-center my-5 mx-3"
+          data-aos="zoom-out"
+          data-aos-duration="800"
+        >
           <FontAwesomeIcon
             icon={faHeadphonesAlt}
             className="h-28 my-4 text-black"
@@ -37,7 +45,11 @@ const Statistics = () => {
             more varieties.
           </p>
         </div>
-        <div className="flex flex-col items-center my-5 mx-3">
+        <div
+          className="flex flex-col items-center my-5 mx-3"
+          data-aos="zoom-out"
+          data-aos-duration="800"
+        >
           <FontAwesomeIcon
             icon={faListNumeric}
             className="h-28 my-4 text-black"
@@ -49,7 +61,11 @@ const Statistics = () => {
             Till now we have sold almost about 100,000 units of gadgets.
           </p>
         </div>
-        <div className="flex flex-col items-center my-5 mx-3">
+        <div
+          className="flex flex-col items-center my-5 mx-3"
+          data-aos="zoom-out"
+          data-aos-duration="800"
+        >
           <FontAwesomeIcon
             icon={faStopwatch}
             className="h-28 my-4 text-black"
