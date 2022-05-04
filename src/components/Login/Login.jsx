@@ -52,7 +52,7 @@ const Login = () => {
           <div
             data-aos="fade-left"
             data-aos-duration="1200"
-            className="md:w-1/2 max-w-lg mx-auto my-3 px-4 py-5 bg-gray-300 rounded-lg shadow-md"
+            className="md:w-1/2 max-w-lg mx-auto my-auto px-4 py-5 bg-gray-300 rounded-lg shadow-md"
           >
             <div className="text-left p-0 font-sans">
               <h1 className=" text-gray-800 text-3xl font-medium">
