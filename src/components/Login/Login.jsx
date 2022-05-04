@@ -18,19 +18,20 @@ const Login = () => {
   const navigate = useNavigate();
   let from = location.state?.from?.pathname || '/';
 
-  if (user) {
-    // navigate(from, { replace: true });
-  }
-
   const handleLogin = async (e) => {
     e.preventDefault();
     const email = e.target.email.value;
     const password = e.target.password.value;
     await signInWithEmailAndPassword(email, password);
-    const response = await axios.post('http://localhost:5000/get-token', {
-      email,
-    });
+    const response = await axios.post(
+      'https://mysterious-gorge-16190.herokuapp.com/get-token',
+      {
+        email,
+      }
+    );
     localStorage.setItem('accessToken', response.data.accessToken);
+    navigate(from, { replace: true });
+    toast('Signed in successfully.');
   };
 
   return (

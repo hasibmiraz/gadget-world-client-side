@@ -13,7 +13,7 @@ const MyItem = () => {
 
   useEffect(() => {
     const getMyProducts = async () => {
-      const url = `http://localhost:5000/products?email=${user.email}`;
+      const url = `https://mysterious-gorge-16190.herokuapp.com/products?email=${user.email}`;
       try {
         const { data } = await axios.get(url, {
           headers: {
@@ -31,7 +31,7 @@ const MyItem = () => {
       }
     };
     getMyProducts();
-  }, [user.email]);
+  }, [user.email, navigate]);
 
   const handleDeleteProduct = async (id) => {
     const url = `https://mysterious-gorge-16190.herokuapp.com/delete-product/${id}`;
