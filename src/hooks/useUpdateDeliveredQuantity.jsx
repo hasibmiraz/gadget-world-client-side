@@ -15,20 +15,25 @@ const useUpdateDeliveredQuantity = () => {
 
   const handleUpdateQuantityAndSold = async () => {
     setLoading(true);
-    await fetch(updateUrl, {
-      method: 'PUT',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        quantity: quantity - 1,
-        sold: sold + 1,
-      }),
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        setProduct(data.result);
-        setLoading(false);
-        toast('Product delivered successfully!');
-      });
+    if (quantity === 'Sold Out') {
+      toast('This product is currently out of stock!');
+      setLoading(false);
+    } else {
+      await fetch(updateUrl, {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          quantity: quantity > 1 ? +quantity - 1 : 'Sold Out',
+          sold: sold + 1,
+        }),
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          setProduct(data.result);
+          setLoading(false);
+          toast('Product delivered successfully!');
+        });
+    }
   };
   return [product, setProduct, handleUpdateQuantityAndSold, loading];
 };

@@ -10,10 +10,10 @@ const ProductsCard = ({ product }) => {
       data-aos="zoom-in"
       data-aos-easing="ease-out-cubic"
       data-aos-duration="500"
-      className="h-1/2"
+      className="h-full"
     >
       <div className="flex justify-center">
-        <div className="flex flex-col md:flex-row md:max-w-xl rounded-lg bg-white shadow-lg">
+        <div className="flex flex-col md:flex-row max-w-sm md:max-w-xl rounded-lg bg-white shadow-lg">
           <img className="home-product-card-img" src={img} alt="" />
           <div className="flex flex-col justify-between px-2">
             <div className="p-6 flex flex-col justify-start space-y-3">
