@@ -43,41 +43,45 @@ const ProductCard = () => {
 
   return (
     <>
-      <div class="flex flex-col md:flex-row justify-center my-12 mx-4 md:mx-auto">
-        <div class="flex flex-col md:flex-row w-3/5 rounded-lg bg-gray-200 p-3 shadow-lg">
+      <div className="flex flex-col md:flex-row justify-center my-12 mx-4">
+        <div className="flex flex-col md:flex-row mx-auto my-4 w-4/5 md:w-3/5 rounded-lg bg-gray-200 p-1 md:p-3 shadow-lg">
           <img
-            class="h-96 w-auto object-cover md:w-96 rounded-md"
+            className="h-96 w-auto object-cover md:w-96 rounded-md"
             src={img}
             alt=""
           />
-          <div class="p-6 flex flex-col justify-start">
-            <h5 class="px-5 text-gray-900 font-bold text-xl mb-2 underline">
-              Product Details
-            </h5>
-            <div className="px-5 pb-2">
-              <h5 className="text-xl font-semibold tracking-tight text-gray-900">
-                {name}
+          <div className="flex flex-col items-between">
+            <div className="px-2 py-4 md:p-4 space-y-3">
+              <h5 className="px-5 text-gray-900 font-bold text-xl mb-2 underline">
+                Product Details
               </h5>
-              <p className="text-md">
-                By{' '}
-                <span className="text-blue-800 font-bold">{supplierName}</span>
-              </p>
-              <p className="text-md my-2">
-                <span className="font-bold text-gray-700">Product ID:</span>{' '}
-                {_id}
-              </p>
-              <p className="text-md my-2">
-                <span className="font-bold text-gray-700">Description:</span>{' '}
-                {description}
-              </p>
-              <p className="text-md my-2">
-                <span className="font-bold text-gray-700">Quantity:</span>{' '}
-                {quantity}
-              </p>
-              <p className="text-md my-2">
-                <span className="font-bold text-gray-700">Sold:</span> {sold}
-              </p>
-              <div className="flex justify-between items-center">
+              <div className="px-5 pb-2">
+                <h5 className="text-xl font-semibold tracking-tight text-gray-900">
+                  {name}
+                </h5>
+                <p className="text-md">
+                  By{' '}
+                  <span className="text-blue-800 font-bold">
+                    {supplierName}
+                  </span>
+                </p>
+                <p className="text-md my-2">
+                  <span className="font-bold text-gray-700">Product ID:</span>{' '}
+                  {_id}
+                </p>
+                <p className="text-md my-2">
+                  <span className="font-bold text-gray-700">Description:</span>{' '}
+                  {description}
+                </p>
+                <p className="text-md my-2">
+                  <span className="font-bold text-gray-700">Quantity:</span>{' '}
+                  {quantity}
+                </p>
+                <p className="text-md my-2">
+                  <span className="font-bold text-gray-700">Sold:</span> {sold}
+                </p>
+              </div>
+              <div className="px-2 py-4 md:p-6 flex justify-between items-center">
                 <span className="text-3xl font-bold text-gray-900">
                   ${price}
                 </span>
