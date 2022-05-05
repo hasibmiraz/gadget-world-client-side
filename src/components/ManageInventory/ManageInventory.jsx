@@ -20,7 +20,6 @@ const ManageInventory = () => {
       })
         .then((res) => res.json())
         .then((data) => {
-          console.log(data);
           const restProducts = products.filter((product) => product._id !== id);
           setProducts(restProducts);
         });

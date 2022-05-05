@@ -15,7 +15,8 @@ const MyItem = () => {
 
   useEffect(() => {
     const getMyProducts = async () => {
-      const url = `https://mysterious-gorge-16190.herokuapp.com/products?email=${user?.email}`;
+      const email = user?.email;
+      const url = `http://localhost:5000/products?email=${email}`;
       try {
         setLoading(true);
         const { data } = await axios.get(url, {
@@ -23,8 +24,6 @@ const MyItem = () => {
             authorization: `Bearer ${localStorage.getItem('accessToken')}`,
           },
         });
-
-        console.log(data);
         setMyProducts(data.result);
         setLoading(false);
       } catch (error) {
