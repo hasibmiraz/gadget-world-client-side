@@ -26,10 +26,6 @@ const Signup = () => {
 
   let from = location.state?.from?.pathname || '/';
 
-  if (user) {
-    navigate(from, { replace: true });
-  }
-
   const handleCreateUser = async (e) => {
     e.preventDefault();
     const name = e.target.name.value;
@@ -47,6 +43,10 @@ const Signup = () => {
       toast('User created successfully!');
     }
   };
+
+  if (user) {
+    navigate(from, { replace: true });
+  }
 
   return (
     <div>
